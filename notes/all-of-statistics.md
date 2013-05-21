@@ -238,9 +238,24 @@ In the Binomial distribution, \\(X\\) is a **random variable**; \\(x\\) denotes 
 ### 2.4 Some Important Continuous Random Variables ###
 
 - **Uniform Distribution**
-- **Normal (Gaussian) Distribution**
-- **Exponential Distribution**
-- **Gamma Distribution**
-- **Beta Distribution**
-- **\\(t\\) and Cauchy Distribution**
-- **\\(\chi^2\\) Distribution**
+- **Normal (Gaussian) Distribution**: X has a Normal (or Gaussian) distribution with parameters \\(\mu\\) and \\(\sigma\\), denoted by \\(X \sim N(\mu, \sigma^2)\\), if
+\\[ f(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left\\{-\frac{1}{2\sigma^2}(x-\mu)^2 \right \\}, \qquad x \in \mathbb{R} \\]
+where \\(\mu \in \mathbb{R}\\) and \\(\sigma > 0\\). The parameter \\(\mu\\) is the "center" (or mean) of the distribution and \\(\sigma\\) is the "spread" (or standard deviation) of the distribution.
+ - We say that \\(X\\) has a **standard Normal distribution** if \\(\mu = 0\\) and \\(\sigma = 1\\). Tradition dictates that a standard Normal random variable is denoted by \\(Z\\). The PDF and CDF of a standard Normal are denoted by \\(\phi(z)\\) and \\(\Phi(z)\\).
+	1. If \\(X \sim N(\mu, \sigma^2)\\), then \\(Z = (X - \mu)/\sigma \sim N(0, 1)\\).
+	2. If \\(Z \sim N(0, 1)\\), then \\(X = \mu + \sigma Z \sim N(\mu, \sigma^2)\\).
+	3. If \\(X\_i \sim N(\mu\_i, \sigma\_i^2)\\), \\(i=1, \cdots,n\\) are independent, then
+	\\[ \sum\_{i=1}^n X\_i \sim N \left(\sum\_{i=1}^n\mu\_i,\sum\_{i=1}^n\sigma\_i^2\right) \\]
+	- It follows that if \\(X \sim N(\mu, \sigma^2)\\), then
+	\\[ \begin{align\*} s &= \mathbb{P}\left(\frac{a-\mu}{\sigma} < Z < \frac{b-\mu}{\sigma}\right) \\\\ &= \Phi\left(\frac{b-\mu}{\sigma}\right ) - \Phi\left(\frac{a-\mu}{\sigma}\right) \end{align\*} \\]
+	Then we can compute any probabilities we want as long as we can comput the CDF \\(\Phi(z)\\) of a standard Normal. All statistical computing packages will compute \\(\Phi(z)\\) and \\(\Phi^{-1}(q)\\).
+- **Exponential Distribution**: \\(X\\) has an Exponential distribution with parameter \\(\beta\\), denoted by \\(X \sim \mathrm{Exp}(\beta)\\), if
+\\[ f(x) = \frac{1}{\beta}e^{-x/\beta} \qquad x>0 \\]
+where \\(\beta >0\\). the exponential distribution is used to model the lifetimes of electronic components and the waiting times between rare events.
+- **Gamma Distribution**: For \\(\alpha > 0\\), the Gamma function is defined by \\(\Gamma(\alpha) = \int_0^\infty y^{\alpha-1}e^{-y}dy\\). \\(X\\) has a Gamma distribution with parameters \\(\alpha\\) and \\(\beta\\), denoted by \\(X \sim \mathrm{Gamma}(\alpha, \beta)\\), if
+\\[ f(x) = \frac{1}{\beta^\alpha \Gamma(\alpha)}x^{\alpha-1}e^{-x/\beta}, \qquad x>0 \\]
+where \\(\alpha, \beta > 0\\). The exponential distribution is just a \\(\mathrm{Gamma}(1,\beta)\\) distribution. If \\(X\_i \sim \mathrm{Gamma}(\alpha\_i, \beta)\\) are independent, then \\(\sum\_{i=1}^n X\_i \sim \mathrm{Gamma}(\sum\_{i=1}^n \alpha\_i, \beta)\\).
+- **Beta Distribution**: \\(X\\) has a Beta distribution with parameters \\(\alpha > 0\\) and \\(\beta > 0\\), denoted by \\(X \sim \mathrm{Beta}(\alpha, \beta)\\), if
+\\[ f(x) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}e^{-x/\beta}, \qquad 0<x<1 \\]
+- **\\(t\\) and Cauchy Distribution**: \\(X\\) has a \\(t\\) distribution with \\(v\\) degrees of freedom - written \\(X \sim t\_v\\).
+- **\\(\chi^2\\) Distribution**: \\(X\\) has a \\(\chi^2\\) distribution with \\(p\\) degrees of freedom - written \\(X \sim \chi\_p^2\\).
